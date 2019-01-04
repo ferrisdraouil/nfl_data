@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    {% block display %} {% endblock %}
+    <div class="containter">
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="name@example.com"
+          />
+        </div>
+        <div class="form-group">
+          <label for="teamSelect">Team select</label>
+          <select class="form-control" id="teamSelect">
+            <option value="ARI">Arizona</option>
+            <option value="ATL">Atlanta</option>
+            <option value="BAL">Baltimore</option>
+            <option value="BUF">Buffalo</option>
+            <option value="CAR">Carolina</option>
+            <option value="CHI">Chicago</option>
+            <option value="CIN">Cincinnati</option>
+            <option value="CLE">Cleveland</option>
+            <option value="DAL">Dallas</option>
+            <option value="DEN">Denver</option>
+            <option value="DET">Detroit</option>
+            <option value="GB">Green Bay</option>
+            <option value="HOU">Houston</option>
+            <option value="IND">Indianapolis</option>
+            <option value="JAX">Jacksonville</option>
+            <option value="KC">Kansas City</option>
+            <option value="LA">LA Rams</option>
+            <option value="LAC">LA Chargers</option>
+            <option value="MIA">Miami</option>
+            <option value="MIN">Minnesota</option>
+            <option value="NE">New England</option>
+            <option value="NO">New Orleans</option>
+            <option value="NYG">New York Giants</option>
+            <option value="NYJ">New York Jets</option>
+            <option value="OAK">Oakland</option>
+            <option value="PHI">Philadelphia</option>
+            <option value="PIT">Pittsburg</option>
+            <option value="SEA">Seattle</option>
+            <option value="SF">San Francisco</option>
+            <option value="TB">Tampa Bay</option>
+            <option value="TEN">Tennessee</option>
+            <option value="WAS">Washington</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="downSelect">Down select</label>
+          <select class="form-control" id="downSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quarterSelect">Quarter select</label>
+          <select class="form-control" id="quarterSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

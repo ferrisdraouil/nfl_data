@@ -1,0 +1,1 @@
+pass_attempts_per_game = "https://www.teamrankings.com/nfl/stat/pass-attempts-per-game"
