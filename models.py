@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
 
-# Team Methods
-
 data = pd.read_pickle('2018.pkl')
+
+
+# Team Methods
 
 
 class Team:

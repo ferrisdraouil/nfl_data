@@ -1,1 +1,8 @@
 venv/
+__pycache__/
+templates/
+2018.pkl
+rawdata.py
+urls.py
+prerun.py
+app.py

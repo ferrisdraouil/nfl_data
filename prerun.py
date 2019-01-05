@@ -105,5 +105,5 @@ def skl_lin_reg():
     print('RMSE', rmse)
 
 
-x = League.grid('offense', 'epa')
+x = Matchup.generate('HOU', 'IND', 'mean', 'wpa', close=True, half=2)
 print(x)
