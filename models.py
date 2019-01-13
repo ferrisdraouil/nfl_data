@@ -473,6 +473,7 @@ class Team:
 
     def grid(self, side, stat, **kwargs):
         """
+        Accepts a required str value side, either 'offense', or 'defense'.
         Accepts a required str value stat, either 'epa', 'wpa'.
         Accepts an optional int value for 'down' 1-4 inclusive.
         Accepts an optional int value for 'quarter' 1-5 inclusive.
@@ -1069,13 +1070,13 @@ class Matchup:
         away_on_offense = x.away_off_home_def_stat(operation, stat, **kwargs)
 
         return {
-            f"Margin {home} on offense":
-            home_on_offense,
-            f"Margin {away} on offense":
-            away_on_offense,
-            f"{home} overall":
+            # f"Margin {home} on offense":
+            # home_on_offense,
+            # f"Margin {away} on offense":
+            # away_on_offense,
+            home:
             round(home_on_offense - away_on_offense, 3),
-            f"{away} overall":
+            away:
             round(away_on_offense - home_on_offense, 3)
         }
 

@@ -88,7 +88,7 @@ def skl_lin_reg():
 
     feature_cols = [
         "WPA margin close second half", "WPA margin close first half",
-        "WPA margin close D1", "WPA margin close Q1 D1", "Wins"
+        "WPA margin close D1", "WPA margin close Q1 D1"
     ]
     X = df[feature_cols]
 
@@ -98,12 +98,63 @@ def skl_lin_reg():
 
     y_pred = linreg.predict(X_test)
 
+    coefs_list = []
+
     q = list(zip(linreg.coef_, feature_cols))
     for i in q:
-        print(i)
+        coefs_list.append(i[0])
     rmse = np.sqrt(metrics.mean_squared_error(y_test, y_pred))
-    print('RMSE', rmse)
+    # print('RMSE', rmse)
+    return coefs_list
 
 
-x = Matchup.generate('HOU', 'IND', 'mean', 'wpa', close=True, half=2)
-print(x)
+args_dict = {}
+cols_dict = {}
+
+close = [True, False]
+quarter = [1, 2, 3, 4]
+down = [1, 2, 3, 4]
+half = [1, 2]
+
+q = Team.all()
+print(cols_dict)
+for team in q:
+    i = Team(team)
+    for x in close:
+        for y in quarter:
+            for z in down:
+                args_dict[f"down{z} quarter{y} close{x}"] = {
+                    "down": z,
+                    "quarter": y,
+                    "close": x
+                }
+for x in args_dict:
+    cols_dict[x] = []
+for team in q:
+    i = Team(team)
+    for x in close:
+        for y in quarter:
+            for z in down:
+                u = i.margin_for_stat(
+                    'mean', 'wpa', 'o',
+                    **args_dict[f"down{z} quarter{y} close{x}"])
+                # cols_dict[f"down{z} qtr{y} close{x}"] = []
+                cols_dict[f"down{z} quarter{y} close{x}"].append(u)
+
+# df = df_creator()
+
+
+def predict(home, away):
+    x = skl_lin_reg()
+    stat1 = Matchup.generate(
+        home, away, 'mean', 'wpa', since='nov', close=True, half=2)
+    stat2 = Matchup.generate(
+        home, away, 'mean', 'wpa', since='nov', close=True, half=1)
+    stat3 = Matchup.generate(
+        home, away, 'mean', 'wpa', since='nov', close=True, down=1)
+    stat4 = Matchup.generate(
+        home, away, 'mean', 'wpa', since='nov', close=True, quarter=1, down=1)
+    final_num = 0
+    final_num += (stat1[home] * x[0]) + (stat2[home] * x[1]) + (
+        stat3[home] * x[2]) + (stat4[home] * x[3])
+    return {home: final_num, away: -final_num}
