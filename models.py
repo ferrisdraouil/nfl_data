@@ -849,9 +849,8 @@ class League:
         league_data = []
         for team in teams:
             x = Team(team)
-            league_data.append((team,
-                                x.margin_for_stat(operation, stat, side,
-                                                  **kwargs)))
+            team_data = x.margin_for_stat(operation, stat, side, **kwargs)
+            league_data.append({team: team_data})
         return league_data
 
     @classmethod
