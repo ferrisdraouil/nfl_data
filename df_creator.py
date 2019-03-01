@@ -32,7 +32,6 @@ def df_creator():
     quarter = [1, 2, 3, 4]
     down = [1, 2, 3, 4]
     half = [1, 2]
-    play= ['run', 'pass']
 
     q = Team.all()
     for team in q:
@@ -112,6 +111,5 @@ def df_creator():
 
     for x in cols_dict:
         final_dict[x] = cols_dict[x]
-
     df = pd.DataFrame(final_dict)
     return df

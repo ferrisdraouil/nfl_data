@@ -1069,10 +1069,6 @@ class Matchup:
         away_on_offense = x.away_off_home_def_stat(operation, stat, **kwargs)
 
         return {
-            # f"Margin {home} on offense":
-            # home_on_offense,
-            # f"Margin {away} on offense":
-            # away_on_offense,
             home:
             round(home_on_offense - away_on_offense, 3),
             away:
