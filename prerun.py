@@ -96,8 +96,10 @@ def skl_lin_reg(target):
                         u = i.margin_for_stat(
                             'mean', 'wpa', 'o',
                             **args_dict[f"down{z} quarter{r} close{x} rz{b}"])
-                        cols_dict[f"down{z} quarter{r} close{x} rz{b}"].append(u)
-                        feature_cols.append(f"down{z} quarter{r} close{x} rz{b}")
+                        cols_dict[f"down{z} quarter{r} close{x} rz{b}"].append(
+                            u)
+                        feature_cols.append(
+                            f"down{z} quarter{r} close{x} rz{b}")
             for r in half:
                 for z in down:
                     u = i.margin_for_stat(
@@ -134,7 +136,7 @@ def skl_lin_reg(target):
 
 
 df = df_creator()
-x = skl_lin_reg('ATS wins')
+# x = skl_lin_reg('ATS wins')
 wins_mean = df.corr()['Wins'].abs().mean()
 wins_std = df.corr()['Wins'].abs().std()
 wins_var = df.corr()['Wins'].abs().var()
@@ -149,20 +151,16 @@ ats_wins_corr = df.corr().sort_values(by=['ATS wins'])['ATS wins']
 def win_ats_differential():
     wins_dict = wins_corr.to_dict()
     ats_dict = ats_wins_corr.to_dict()
-    print('ATS DICT', ats_dict)
     final_list = []
     for key in wins_dict:
-        final_list.append({key: wins_dict[key] - ats_dict[key]})
+        final_list.append((key, wins_dict[key] - ats_dict[key]))
         # final_dict[key] = wins_dict[key] - ats_dict[key]
-    # sorted(final_list, key=lambda x: x[1])
+    final_list = sorted(final_list, key=lambda x: x[1])
     return final_list
 
 
-# diff = win_ats_differential()
+diff = win_ats_differential()
 # print('SORTED DIFF', sorted_diff)
-
-# with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-#     print(df.corr())
 
 # def predict(home, away):
 # stat1 = Matchup.generate(
@@ -177,4 +175,3 @@ def win_ats_differential():
 # final_num += (stat1[home] * x[0]) + (stat2[home] * x[1]) + (
 #     stat3[home] * x[2]) + (stat4[home] * x[3])
 # return {home: final_num, away: -final_num}
-

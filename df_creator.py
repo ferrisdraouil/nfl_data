@@ -34,39 +34,39 @@ def df_creator():
     half = [1, 2]
 
     q = Team.all()
-    for team in q:
-        i = Team(team)
-        for x in close:
-            for a in half:
+    # for team in q:
+    #     i = Team(team)
+    for x in close:
+        for a in half:
+            for z in down:
+                args_dict[f"down{z} half{a} close{x}"] = {
+                    "down": z,
+                    "half": a,
+                    "close": x
+                }
+            for b in rz:
                 for z in down:
-                    args_dict[f"down{z} half{a} close{x}"] = {
+                    args_dict[f"down{z} half{a} close{x} rz{b}"] = {
                         "down": z,
                         "half": a,
-                        "close": x
+                        "close": x,
+                        "rz": b
                     }
-                for b in rz:
-                    for z in down:
-                        args_dict[f"down{z} half{a} close{x} rz{b}"] = {
-                            "down": z,
-                            "half": a,
-                            "close": x,
-                            "rz": b
-                        }
-            for y in quarter:
+        for y in quarter:
+            for z in down:
+                args_dict[f"down{z} quarter{y} close{x}"] = {
+                    "down": z,
+                    "quarter": y,
+                    "close": x
+                }
+            for b in rz:
                 for z in down:
-                    args_dict[f"down{z} quarter{y} close{x}"] = {
+                    args_dict[f"down{z} quarter{y} close{x} rz{b}"] = {
                         "down": z,
-                        "quarter": y,
-                        "close": x
+                        "half": a,
+                        "close": x,
+                        "rz": b
                     }
-                for b in rz:
-                    for z in down:
-                        args_dict[f"down{z} quarter{y} close{x} rz{b}"] = {
-                            "down": z,
-                            "half": a,
-                            "close": x,
-                            "rz": b
-                        }
     for x in args_dict:
         cols_dict[x] = []
     for team in q:
@@ -87,9 +87,11 @@ def df_creator():
                             'median', 'wpa', 'o',
                             **args_dict[f"down{z} half{a} close{x} rz{b}"])
                         if str(u) == 'nan':
-                            cols_dict[f"down{z} half{a} close{x} rz{b}"].append(0)
+                            cols_dict[
+                                f"down{z} half{a} close{x} rz{b}"].append(0)
                         else:
-                            cols_dict[f"down{z} half{a} close{x} rz{b}"].append(u)
+                            cols_dict[
+                                f"down{z} half{a} close{x} rz{b}"].append(u)
             for y in quarter:
                 for z in down:
                     u = i.margin_for_stat(
@@ -105,9 +107,11 @@ def df_creator():
                             'median', 'wpa', 'o',
                             **args_dict[f"down{z} quarter{y} close{x} rz{b}"])
                         if str(u) == 'nan':
-                            cols_dict[f"down{z} quarter{y} close{x} rz{b}"].append(0)
+                            cols_dict[
+                                f"down{z} quarter{y} close{x} rz{b}"].append(0)
                         else:
-                            cols_dict[f"down{z} quarter{y} close{x} rz{b}"].append(u)
+                            cols_dict[
+                                f"down{z} quarter{y} close{x} rz{b}"].append(u)
 
     for x in cols_dict:
         final_dict[x] = cols_dict[x]
