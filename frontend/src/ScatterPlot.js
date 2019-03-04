@@ -33,8 +33,9 @@ export default class ScatterPlot extends React.Component {
       <div>
         <h3> {this.props.title} </h3>
         <svg
-          width={width + margin.right + margin.left}
-          height={height + margin.top + margin.bottom}
+          viewBox={`0, 0, ${width + margin.right + margin.left}, ${height +
+            margin.top +
+            margin.bottom}`}
           className="chart"
         >
           <g
