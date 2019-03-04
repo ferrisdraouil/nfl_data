@@ -2,20 +2,26 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  color: #301b28;
+  color: #f1f3ce;
 }
 
 hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 3px solid #523634;
+  border-top: 3px solid #f1f3ce;
   margin: 1em 0;
   padding: 0;
 }
 
+code {
+  font-weight: bolder;
+  color: #f62a00;
+  text-shadow: 1.2px 1.2px 1.2px #1e656d;
+}
+
 .App {
-  background-color: #ddc5a2;
+  background-color: #00293c;
 }
 
 #container {
@@ -32,21 +38,49 @@ hr {
   justify-content: center;
   align-items: center;
   font-size: xx-large;
-  text-shadow: 1.5px 1.5px 1.5px #b6452c;
+  color: #f62a00;
+  text-shadow: 5px 5px 5px #1e656d;
 }
 
 .two {
   grid-column: 2 / 4;
   grid-row: 3;
   text-align: center;
+  color: #f62a00;
+  text-shadow: 1.5px 1.5px 1.5px #1e656d;
+  font-size: x-large;
 }
 
 .three {
   grid-column: 2 / 4;
   grid-row: 5;
+  color: #f62a00;
+  text-shadow: 1.5px 1.5px 1.5px #1e656d;
 }
 
 .four {
   grid-column: 2 / 4;
   grid-row: 6;
+  /* color: #f1f3ce; */
+}
+
+.five {
+  grid-column: 2 / 4;
+  grid-row: 7;
+  /* color: #8c0004; */
+}
+
+.six {
+  grid-column: 2 / 4;
+  grid-row: 9;
+  color: #f62a00;
+  text-shadow: 1.5px 1.5px 1.5px #1e656d;
+}
+.seven {
+  grid-column: 2 / 4;
+  grid-row: 10;
+}
+.eight {
+  grid-column: 2 / 4;
+  grid-row: 11;
 }
