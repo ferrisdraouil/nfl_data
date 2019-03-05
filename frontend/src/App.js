@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import LinearPlot from './LinearPlot';
+import ScatterPlot from './ScatterPlot';
 
 class App extends Component {
   render() {
+    const { winsVsAts, downOneQuarterFourCloseTrue } = this.props;
+    const winsVsDownOneQuarterFourCloseTrue = winsVsAts.map((elem, idx) => {
+      return [elem[0], downOneQuarterFourCloseTrue[idx]];
+    });
+    const atsWinsVsDownOneQuarterFourCloseTrue = winsVsAts.map((elem, idx) => {
+      return [elem[1], downOneQuarterFourCloseTrue[idx]];
+    });
     return (
       <div className="App" id="container">
         <header className="one">
-          <h1>Winning in the NFL</h1>
+          <h1>Winning Situations</h1>
         </header>
         <b className="two">
-          Visualizing key metrics that affect a team's ability to win on the
-          field and against the spread.
+          Understanding and visualizing key moments that affect a team's ability
+          to win on the field and against the spread in the NFL.
           <hr />
         </b>
         <h1 className="three">Which stats matter?</h1>
@@ -33,13 +40,15 @@ class App extends Component {
           </p>
         </section>
         <section className="five">
-          <LinearPlot
+          <ScatterPlot
             data={this.props.winsVsAts}
             title={'Wins vs Wins Against the Spread'}
           />
           But before going deeper into any results and statistics, lets take a
           look at the tools, methodology, and inputs used to derive them.
+          <hr />
         </section>
+
         <h1 className="six">Python, Pandas, and nflscrapR</h1>
         <section className="seven">
           <h3>
@@ -99,6 +108,79 @@ class App extends Component {
             they become very interesting.
           </p>
         </section>
+        <header className="eight">
+          <h1>The Game's Mosts Important Situation</h1>
+          <hr />
+        </header>
+        <section className="nine">
+          <p>
+            To both teams and gamblers alike, there is one situation which
+            correlates with success more than any other. A team's Win
+            Probability Added per play on{' '}
+            <b>First Down in the Fourth Quarter of close games</b>. Here, close
+            is defined as a score differential less than or equal to 12 points.
+            The raw correlation to wins is <b>0.78</b> and to against the spread
+            wins it is <b>0.54</b>. Both of those numbers are the highest in
+            their respective categories.
+          </p>
+          <ScatterPlot
+            data={winsVsDownOneQuarterFourCloseTrue}
+            title="Wins vs WPA Down One, Quarter Four, Close Game"
+          />
+          <ScatterPlot
+            data={atsWinsVsDownOneQuarterFourCloseTrue}
+            title="ATS Wins vs WPA - Down One, Quarter Four, Close Game"
+          />
+          <p>
+            If you're a diehard football fan, as I am, this is somewhat
+            surprisng to find out. The common sense states that third is the
+            King of downs, and the best teams are the best because they dial up
+            their performance when it's either succeed or vacate the field of
+            play.
+          </p>
+          <p>
+            In fact, third down does not appear to be nearly as important as the
+            first two. Take, for example,{' '}
+            <b>third down in the fourth quarter of close games</b>. If you had
+            asked me to make a hypothesis about which situation would correlate
+            most strongly with a team's win-loss record, then this would have
+            been the one I chose. As it turns out, the correlation coefficient
+            is <b>0.42</b>, which is respectable, but to put it in context,
+            there are fifty game states that are more strongly correlated to
+            wins. Further extending the weirdness, of those fifty, only five
+            involve third down -- the rest are all tied to either first or
+            second down.
+          </p>
+          <p>
+            For the curious, the top five in order are:
+            <ol>
+              <li>First Down, Fourth Quarter, Close Game</li>
+              <li>First Down, Second Half, Close Game</li>
+              <li>
+                First Down, Third Quarter, Close Game, Outside the Red Zone
+              </li>
+              <li>
+                First Down, Second Quarter, Close Game, Outside the Red Zone
+              </li>
+              <li>
+                First Down, First Quarter, Close Game, Outside the Red Zone
+              </li>
+            </ol>
+            <br />
+            And for wins against the spread:
+            <ol>
+              <li>First Down, Fourth Quarter, Close Game</li>
+              <li>Second Down, Second Half, Close Game</li>
+              <li>Second Down, Second Half, Close Game, Inside the Red Zone</li>
+              <li>
+                Second Down, Second Quarter, Close Game, Inside the Red Zone
+              </li>
+              <li>
+                Second Down, First Quarter, Close Game, Inside the Red Zone
+              </li>
+            </ol>
+          </p>
+        </section>
       </div>
     );
   }
@@ -138,6 +220,40 @@ App.defaultProps = {
     [5, 7],
     [9, 8],
     [7, 9]
+  ],
+  downOneQuarterFourCloseTrue: [
+    -0.01,
+    0,
+    0.004,
+    0,
+    -0.007,
+    0.015,
+    -0.005,
+    0.008,
+    0.004,
+    -0.007,
+    -0.009,
+    -0.005,
+    0.001,
+    0.005,
+    0.002,
+    0.007,
+    0.01,
+    0.008,
+    -0.004,
+    -0.003,
+    0.004,
+    0.007,
+    -0.003,
+    -0.011,
+    -0.011,
+    0,
+    0.003,
+    -0.002,
+    -0.006,
+    -0.003,
+    0.001,
+    -0.004
   ]
 };
 

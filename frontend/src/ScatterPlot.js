@@ -1,5 +1,5 @@
 import React from 'react';
-import { scaleLinear, max, axisLeft, axisBottom } from 'd3';
+import { scaleLinear, max, min, axisLeft, axisBottom } from 'd3';
 import Circles from './Circles';
 import TrendLine from './TrendLine';
 import Axis from './Axis';
@@ -13,7 +13,12 @@ export default class ScatterPlot extends React.Component {
 
     const x = scaleLinear()
       .domain([
-        0,
+        Math.min(
+          min(data, function(d) {
+            return d[0];
+          }),
+          0
+        ),
         max(data, function(d) {
           return d[0];
         })
@@ -22,7 +27,12 @@ export default class ScatterPlot extends React.Component {
 
     const y = scaleLinear()
       .domain([
-        0,
+        Math.min(
+          min(data, function(d) {
+            return d[1];
+          }),
+          0
+        ),
         max(data, function(d) {
           return d[1];
         })
@@ -33,10 +43,10 @@ export default class ScatterPlot extends React.Component {
       <div>
         <h3> {this.props.title} </h3>
         <svg
+          className="chart"
           viewBox={`0, 0, ${width + margin.right + margin.left}, ${height +
             margin.top +
             margin.bottom}`}
-          className="chart"
         >
           <g
             transform={'translate(' + margin.left + ',' + margin.top + ')'}

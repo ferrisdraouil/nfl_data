@@ -54,7 +54,7 @@ export default class TrendLine extends React.Component {
         y1={this.props.scale.y(trendline_points[0][1])}
         x2={this.props.scale.x(trendline_points[1][0])}
         y2={this.props.scale.y(trendline_points[1][1])}
-        style={{ stroke: '#f62a00', strokeWidth: '2' }}
+        style={{ stroke: '#f7ce3e', strokeWidth: '4' }}
       />
     );
   }

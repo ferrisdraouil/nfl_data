@@ -7,7 +7,7 @@ export default class RenderCircles extends React.Component {
         cx={this.props.scale.x(coords[0])}
         cy={this.props.scale.y(coords[1])}
         r="8"
-        style={{ fill: '#1e656d' }}
+        style={{ fill: '#1a2903' }}
         key={i}
       />
     ));
