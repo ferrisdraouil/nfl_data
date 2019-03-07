@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Bitter');
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -40,7 +41,7 @@ code {
   align-items: center;
   font-size: xx-large;
   color: #0a1612;
-  text-shadow: 3px 3px 3px #1a2903;
+  font-family: 'Bitter', serif;
 }
 
 .two {
@@ -48,15 +49,16 @@ code {
   grid-row: 3;
   text-align: center;
   color: #0a1612;
-  text-shadow: 1.0px 1.0px 1.0px #1a2903;
+  text-shadow: 0.2px 0.2px 0.2px #1a2903;
   font-size: x-large;
+  font-family: 'Bitter', serif;
 }
 
 .three {
   grid-column: 2 / 5;
   grid-row: 5;
   color: #0a1612;
-  text-shadow: 1.5px 1.5px 1.5px #1a2903;
+  /* text-shadow: 1.5px 1.5px 1.5px #1a2903; */
 }
 
 .four {
@@ -73,7 +75,7 @@ code {
   grid-column: 2 / 5;
   grid-row: 9;
   color: #0a1612;
-  text-shadow: 1.5px 1.5px 1.5px #1a2903;
+  /* text-shadow: 1.5px 1.5px 1.5px #1a2903; */
 }
 .seven {
   grid-column: 2 / 5;
@@ -86,4 +88,20 @@ code {
 .nine {
   grid-column: 2 / 5;
   grid-row: 12;
+}
+.ten {
+  grid-column: 2 / 5;
+  grid-row: 13;
+}
+.eleven {
+  grid-column: 2 / 5;
+  grid-row: 14;
+}
+.twelve {
+  grid-column: 2 / 5;
+  grid-row: 15;
+}
+.thirteen {
+  grid-column: 2 / 5;
+  grid-row: 16;
 }
