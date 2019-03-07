@@ -1,3 +1,5 @@
+// Scatterplot template original from https://github.com/isaaguilar/
+
 import React from 'react';
 import { scaleLinear, max, min, axisLeft, axisBottom } from 'd3';
 import Circles from './Circles';
