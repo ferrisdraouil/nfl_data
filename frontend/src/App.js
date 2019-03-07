@@ -46,7 +46,6 @@ class App extends Component {
           />
           But before going deeper into any results and statistics, lets take a
           look at the tools, methodology, and inputs used to derive them.
-          <hr />
         </section>
 
         <h1 className="six">Python, Pandas, and nflscrapR</h1>
@@ -109,8 +108,7 @@ class App extends Component {
           </p>
         </section>
         <header className="eight">
-          <h1>The Game's Mosts Important Situation</h1>
-          <hr />
+          <h1>The Game's Mosts Important Situation (Maybe)</h1>
         </header>
         <section className="nine">
           <p>
@@ -180,6 +178,28 @@ class App extends Component {
               </li>
             </ol>
           </p>
+        </section>
+        <header className="ten">
+          <h1>Limitations</h1>
+        </header>
+        <section className="eleven">
+          This data tells us nothing about <b>why</b> or <b>how</b> first down
+          performance correlates to wins, just the fact that good teams are more
+          uniformly adept in these situations. For example, it does not
+          necessarily imply that they call all of their good plays on first down
+          and leave the scraps for third. Good teams are probably better on
+          first down, because they're more complete and present a diverse array
+          of strengths for their opponents to contend with. On first and ten, a
+          team has a great deal of freedom to run whatever play they want.
+        </section>
+        <header className='twelve'>
+
+          <h1>Thanks!</h1>
+        </header>
+        <section className="thirteen">
+          Thank you for taking the time out of your day to read this! A link to
+          the Github repo with the entirety of the code used to generate the
+          aforementioned stats can be found below.
         </section>
       </div>
     );
